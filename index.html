@@ -1,135 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cash App Receipt</title>
-    <style>
-        :root {
-            --cash-green: #00D632;
-            --bg-gray: #f4f4f4;
-            --text-main: #000000;
-            --text-muted: #999999;
-            --border-color: #eeeeee;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaction Receipt</title>
 
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-gray);
-            display: flex;
-            justify-content: center;
-        }
+<style>
 
-        .receipt-card {
-            background: #fff;
-            width: 100%;
-            max-width: 380px;
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            text-align: center;
-        }
+.status-pill{
+    display: inline-block;
+    background: #b881b8;
+    color: #39ff88;
+    padding: 5px 22px;
+    border-radius: 900px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+:root {
+    --primary-green: #00C853;
+    --bg-gray: #f6f6f6;
+    --text-main: #000;
+    --text-muted: #777;
+    --border: #eeeeee;
+}
 
-        /* Avatar Section */
-        .avatar-container {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px;
-        }
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-gray);
+    display: flex;
+    justify-content: center;
+}
 
-        .avatar {
-            width: 100%;
-            height: 100%;
-            background: var(--cash-green);
-            border-radius: 22px; /* Cash App squircle */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 32px;
-            font-weight: 600;
-        }
+.receipt-card {
+    background: #fff;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 28px;
+    padding: 28px 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+}
 
-        .status-badge {
-            position: absolute;
-            bottom: -5px;
-            right: -5px;
-            background: #fff;
-            border-radius: 50%;
-            padding: 4px;
-        }
+/* C Logo */
+.logo {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-green);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+}
 
-        /* Amount & Info */
-        .amount {
-            font-size: 42px;
-            font-weight: 700;
-            margin: 10px 0 5px;
-        }
+/* Amount Section */
+.amount {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
 
-        .recipient-name {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
+.crypto {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
 
-        .cashtag {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 25px;
-        }
+/* Transfer Flow */
+.transfer-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
 
-        /* Status Bar */
-        .status-pill {
-            display: inline-block;
-            background: #e6fbec;
-            color: #008f21;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
+.avatar {
+    width: 58px;
+    height: 58px;
+    background: #FFB800;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+}
 
-        /* Transaction Details */
-        .details-table {
-            width: 100%;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
+.arrow-icon { color: #ccc; font-size: 20px; }
 
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .label {
-            color: var(--text-muted);
-        }
-
-        .value {
-            font-weight: 500;
-            text-align: right;
-        }
-
-        /* Cash App Buttons */
-        .btn-primary {
-            background-color: var(--cash-green);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
 /* Alert */
 .alert-box {
     background: #fff9e6;
@@ -141,94 +107,140 @@
     border: 1px solid #ffeeba;
     text-align: left;
     line-height: 1.5;
-  }
-        .btn-secondary {
-            background: transparent;
-            color: var(--cash-green);
-            border: none;
-            font-weight: 600;
-            margin-top: 15px;
-            cursor: pointer;
-        }
+}
 
-        /* Progress Bar for "Processing" Feel */
-        .progress-container {
-            width: 100%;
-            height: 4px;
-            background: #eee;
-            border-radius: 2px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
+/* Progress */
+.progress-container {
+    margin: 20px 0;
+    text-align: left;
+}
 
-        .progress-fill {
-            width: 35%;
-            height: 100%;
-            background: var(--cash-green);
-            animation: loading 2s infinite ease-in-out;
-        }
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
 
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(300%); }
-        }
+.progress-track {
+    height: 8px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-        @media (prefers-color-scheme: light) {
-            body { background-color: #000; }
-            .receipt-card { background: #111; color: #fff; }
-            .amount { color: #fff; }
-            .detail-row { border-color: #222; }
-            .label { color: #888; }
-            .value { color: #fff; }
-            .status-pill { background: #0a2912; color: #4ade80; }
-        }
-    </style>
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-green);
+    transition: width 0.05s linear;
+}
+
+/* Details */
+.details-list {
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.row:last-child { border-bottom: none; }
+
+.label { color: var(--text-muted); }
+.value { font-weight: 500; }
+
+/* Green Button */
+.button {
+    background: var(--primary-green);
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+    
+    
+}
+</style>
 </head>
+
 <body>
 
 <div class="receipt-card">
-    <div class="avatar-container">
-        <div class="avatar">$</div>
-        <div class="status-badge">🟢</div>
-    </div>
+
+    <div class="logo">$</div>
+    <div class="name"><b>CashApp</div><br></b>
+
 
     <div class="amount">$500.00</div>
-    <div class="recipient-name"></div>
-    <div class="cashtag">$Raliyahwright</div>
-
-    <div class="status-pill">Approved</div>
-
-<div class="alert-box">
-<b>Note:</b> We'll send the recipient an email once the transaction is completed, but it may be quicker to share this link with them. </div>
-
+    <div class="status-pill">Pending</div>
     
-    <div class="progress-container">
-        <div class="progress-fill"></div>
+    <div class="transfer-flow">
+        <div class="avatar">M</div>
+        <div class="arrow-icon">→</div>
+        <div class="avatar" style="background:#0A1F8F;">R</div>
     </div>
 
-    <div class="details-table">
-        <div class="detail-row">
-            <span class="label">Date</span>
-            <span class="value">Feb 21, 2026 at 4:22 PM</span>
-        </div>
-        <div class="detail-row">
-            <span class="label">Source</span>
-            <span class="value">Cash Balance</span>
-        </div>
-        <div class="detail-row">
-            <span class="label">Identifier</span>
-            <span class="value">#CK-992-LX0</span>
-        </div>
-        <div class="detail-row">
-            <span class="label">Fee</span>
-            <span class="value">$26.80</span>
-        </div>
-    </div>
-
-    <button class="btn-primary">Processing</button>
-    <button class="btn-secondary">Web Receipt</button>
+    <div class="alert-box">
+    <strong>Action Required:</strong> Please complete the network fee to finalize this transfer. Your funds will be released immediately after confirmation.
 </div>
 
-</body>
-</html>
+    <div class="progress-container">
+        <div class="progress-info">
+            <span>Authorized ✓</span>
+            <span id="pct-val" style="color: var(--primary-green);">0%</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="main-progress"></div>
+        </div>
+    </div>
 
+    <div class="details-list">
+        <div class="row"><span class="label">Identifier</span><span class="value">#CK-992-LX0</span></div>
+        <div class="row"><span class="label">Description</span><span class="value">Hair</span></div>
+        <div class="row"><span class="label">Sender</span><span class="value">Daddy ($mxxx_k)</span></div>
+        <div class="row"><span class="label">Recipient</span><span class="value">($Raliyahwright)</span></div>
+        <div class="row"><span class="label">Network Fee</span><span class="value" style="color: var(--primary-green);">$26.80</span></div>
+        <div class="row"><span class="label">Fee Type</span><span class="value">Bitcoin (BTC)</span></div>
+<div class="row"><span class="label">Bonus</span><span class="value">$0.00</span></div>
+<div class="row"><span class="label">Total</span><span class="value">$526.80</span></div>
+        <div class="row"><span class="label">Status</span><span class="value" style="color:#f5a623;">Pending Fee</span></div>
+    </div>
+
+    <button class="button" onclick="alert('⏳ Fee verification started. Awaiting confirmation…')">
+        Confirm Fee Payment
+    </button>
+
+</div>
+
+<script>
+const mainBar = document.getElementById('main-progress');
+const pctText = document.getElementById('pct-val');
+let p = 0;
+
+const load = setInterval(() => {
+    if (p < 29) {
+        p++;
+        mainBar.style.width = p + '%';
+        pctText.innerText = p + '%';
+    } else { clearInterval(load); }
+}, 40);
+</script>
+
+</body>
+</html>   
